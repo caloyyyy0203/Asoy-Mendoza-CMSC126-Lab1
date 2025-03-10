@@ -6,4 +6,5 @@ class DataLinkLayer:
         return f"{self.mac_address}:{data}"  # Attach MAC address
     
     def receive(self, data):
-        return data.split(":", 1)[1]  # Remove MAC address
+        # Remove only the MAC address part
+        return data[len(self.mac_address) + 1:]  # +1 accounts for the colon (":")
